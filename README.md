@@ -1,5 +1,5 @@
 
-**Windows Local Administrator Password Solutions With Intune**
+## **Windows Local Administrator Password Solutions(LAPS) With Intune**
 
 What is Windows **LAPS**?
 
@@ -17,7 +17,7 @@ Browse to **Identity** > **Devices** > **Overview** > D**evice settings**
 Select Yes for the Enable Local Administrator Password Solution (LAPS) setting, then select **Save**.
  
 **Step 2**: Login to the Intune admin portal with the right access.
-Select the **Endpoint security** > **Account Protection** > **Create Policy** > **Windows platform** > **WIndows LAPS**
+Select the **Endpoint security** > **Account Protection** > **Create Policy** > **Windows platform** > **Windows LAPS**
 
 ![image](https://github.com/user-attachments/assets/aa6806e2-088e-41af-9938-c809f2c09e91)
 Figure 1
@@ -27,28 +27,40 @@ Fill out the Configuration in accordance with your organization’s security pol
 ![Screenshot 2024-11-16 142619](https://github.com/user-attachments/assets/7c9e5f9b-89f6-4b8f-b4ac-6053681d9cc3)
 Figure 2
 
-**Method 2: Windows LAPS CSP**
+### Method 2: Windows LAPS CSP
 
 The Local Administrator Password Solution (LAPS) configuration service provider (CSP) is used by the enterprise to manage back up of local administrator account passwords. The link [LAPS CSP](https://learn.microsoft.com/en-us/windows/client-management/mdm/laps-csp#policiespasswordcomplexity/) contains a list of all OMA-URI policies that can be configured for LAPS. There are more customizations in using the OMA-URI settings over the Endpoint security in Method 1 above. The following policies are configured and assigned to device groups not user groups.
 
-Step 1: Login to Intune admin portal > **Devices** >**Configuration** > **Create** 
+**Step 1**: Login to Intune admin portal > **Devices** >**Configuration** > **Create** 
 Platform : Windows 10 or later
 Profile: Templates > Select **Custom**
 Name: Name the policy
 Click Next to the Configuration and select **Add** as shown in Figure 3 below
 
 ![image](https://github.com/user-attachments/assets/7f574689-931a-428c-a6a6-2cb2d0a05103)
-Figure 3
+_Figure 3_
 
 Set up the OMA-URI settings as required following the guidelines highlighted below. The settings are arranged in order of dependency starting with the independent settings. Note that some of the settings works only on Windows 11 24H2.
 
 ![Screenshot 2024-11-17 095525](https://github.com/user-attachments/assets/58d4d420-b29e-4ad5-b3d2-4e02434e5f56)
-Figure 4
-
+_Figure 4_
 ![image](https://github.com/user-attachments/assets/94d3536b-31cd-4f38-acda-d74f4e1c287f)
-Figure 5
+_Figure 5_
 
-The following settings are arranged based on the dependency status. 
+![Screenshot 2024-11-16 223557](https://github.com/user-attachments/assets/2ea38734-7451-40f8-adf2-4bbf6a557828)
+_Figure 6_ : OMA-URI settings
+
+**Result**: <br />
+To verify if the device received the policy, go to Event Viewer on the local device > Applications and Services Logs > Microsoft > Windows > LAPS > Double-click on Operational<br />
+Find **Event ID 10022** to see all the settings you pushed through Intune. See image below. 
+
+![image](https://github.com/user-attachments/assets/66bc2fba-9244-4e5b-9ff9-1a4a61997853)
+_Figure 7_:Event Viewer
+
+Also on the local device, check “Computer Management” > users & groups to see the new _LapsAdmin_ user account created. You can also verify in the Entra portal under the Devices > Local administrator password recovery.
+
+#### More details about the OMA-URI settings - [LAPS CSP](https://learn.microsoft.com/en-us/windows/client-management/mdm/laps-csp#policiespasswordcomplexity/)
+The following settings are arranged based on the dependency status. You may want to configure the _Independent settings_ first.
 
 **Independent settings**<br />
 **1. BackupDirectory:** Used to configure which directory the local admin account password is saved.
