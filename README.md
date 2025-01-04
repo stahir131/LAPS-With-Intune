@@ -31,10 +31,10 @@ Figure 2
 
 The Local Administrator Password Solution (LAPS) configuration service provider (CSP) is used by the enterprise to manage back up of local administrator account passwords. The link [LAPS CSP](https://learn.microsoft.com/en-us/windows/client-management/mdm/laps-csp#policiespasswordcomplexity/) contains a list of all OMA-URI policies that can be configured for LAPS. There are more customizations in using the OMA-URI settings over the Endpoint security in Method 1 above. The following policies are configured and assigned to device groups not user groups.
 
-**Step 1**: Login to Intune admin portal > **Devices** >**Configuration** > **Create** 
-Platform : Windows 10 or later
-Profile: Templates > Select **Custom**
-Name: Name the policy
+**Step 1**: Login to Intune admin portal > **Devices** >**Configuration** > **Create**<br />
+Platform : Windows 10 or later<br />
+Profile: Templates > Select **Custom**<br />
+Name: Name the policy<br />
 Click Next to the Configuration and select **Add** as shown in Figure 3 below
 
 ![image](https://github.com/user-attachments/assets/7f574689-931a-428c-a6a6-2cb2d0a05103)
@@ -47,7 +47,8 @@ _Figure 4_
 ![image](https://github.com/user-attachments/assets/94d3536b-31cd-4f38-acda-d74f4e1c287f)
 _Figure 5_
 
-![Screenshot 2024-11-16 223557](https://github.com/user-attachments/assets/2ea38734-7451-40f8-adf2-4bbf6a557828)
+![image](https://github.com/user-attachments/assets/08dba39b-cd41-4320-9f91-a0dd289c85a5)
+
 _Figure 6_ : OMA-URI settings
 
 **Result**: <br />
