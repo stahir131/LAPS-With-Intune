@@ -20,12 +20,12 @@ Select Yes for the Enable Local Administrator Password Solution (LAPS) setting, 
 Select the **Endpoint security** > **Account Protection** > **Create Policy** > **Windows platform** > **Windows LAPS**
 
 ![image](https://github.com/user-attachments/assets/aa6806e2-088e-41af-9938-c809f2c09e91)
-Figure 1
+_Figure 1_
 
 Fill out the Configuration in accordance with your organization’s security policies. Assign this to a device group.
 
 ![Screenshot 2024-11-16 142619](https://github.com/user-attachments/assets/7c9e5f9b-89f6-4b8f-b4ac-6053681d9cc3)
-Figure 2
+_Figure 2_
 
 ### Method 2: Windows LAPS CSP
 
@@ -37,25 +37,25 @@ Profile: Templates > Select **Custom**<br />
 Name: Name the policy<br />
 Click Next to the Configuration and select **Add** as shown in Figure 3 below
 
-![image](https://github.com/user-attachments/assets/7f574689-931a-428c-a6a6-2cb2d0a05103)
+![image](https://github.com/user-attachments/assets/784029f2-18e9-4451-b801-deaac4cdbfc9)
 _Figure 3_
 
 Set up the OMA-URI settings as required following the guidelines highlighted below. The settings are arranged in order of dependency starting with the independent settings. Note that some of the settings works only on Windows 11 24H2.
 
 ![Screenshot 2024-11-17 095525](https://github.com/user-attachments/assets/58d4d420-b29e-4ad5-b3d2-4e02434e5f56)
 _Figure 4_
-![image](https://github.com/user-attachments/assets/94d3536b-31cd-4f38-acda-d74f4e1c287f)
+
+![image](https://github.com/user-attachments/assets/e73a89bc-dea9-4de8-a4f4-2041e372e39d) <br />
 _Figure 5_
 
-![image](https://github.com/user-attachments/assets/08dba39b-cd41-4320-9f91-a0dd289c85a5)
-
+![image](https://github.com/user-attachments/assets/08dba39b-cd41-4320-9f91-a0dd289c85a5) <br />
 _Figure 6_ : OMA-URI settings
 
-**Result**: <br />
-To verify if the device received the policy, go to Event Viewer on the local device > Applications and Services Logs > Microsoft > Windows > LAPS > Double-click on Operational<br />
+## **Result**: <br />
+To verify if the device received the policy, go to **Event Viewer** on the local device > **Applications and Services Logs** > **Microsoft** > **Windows** > **LAPS** > Double-click on **Operational**<br />
 Find **Event ID 10022** to see all the settings you pushed through Intune. See image below. 
 
-![image](https://github.com/user-attachments/assets/66bc2fba-9244-4e5b-9ff9-1a4a61997853)
+![image](https://github.com/user-attachments/assets/66bc2fba-9244-4e5b-9ff9-1a4a61997853) <br />
 _Figure 7_:Event Viewer
 
 Also on the local device, check “Computer Management” > users & groups to see the new _LapsAdmin_ user account created. You can also verify in the Entra portal under the Devices > Local administrator password recovery.
